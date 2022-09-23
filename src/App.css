@@ -9,6 +9,8 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
+    height: 20vmin;
+    margin-right: -30px;
     animation: App-logo-spin infinite 20s linear;
   }
 }

@@ -9,7 +9,6 @@ import { PublicClientApplication, EventType } from "@azure/msal-browser";
 import { msalConfig } from "./authConfig";
 
 
-
 const verticalGapStackTokens = {
   childrenGap: 10,
   padding: 10,

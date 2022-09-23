@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/f21f1326-1254-4807-96dc-0bbd823fd878/AppServices/subscriptions/f21f1326-1254-4807-96dc-0bbd823fd878/resourceGroups/msquiz/providers/Microsoft.Web/sites/msquiz",
+    "appService.deploySubpath": "."
+}

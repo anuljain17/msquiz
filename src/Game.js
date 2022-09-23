@@ -4,33 +4,46 @@ import Question from "./components/Question";
 
 
 let index =0;
-function Game() {
-    const [context, setContext] = useState({questions: [<Question description={"Question Start"}></Question>], counter: 5, score: 0});
+function Game(params) {
 
-    var arr = [];
-    for(var i=0;i<10;i++){
-        arr.push(<Question description={i+ ". Question"}></Question>);
-    }
+    const [context, setContext] = useState({questions: [], counter: 10, score: 0, GameOver: false});
 
-    useEffect(() => {
-        context.counter >= 0 && index<arr.length && setTimeout(() => {      
-            if(context.counter <= 0) {
-                //move to next question and reset the timer
-                setContext({...context, questions:[arr[index]], counter : 5})
-                index++;
-            } else {
-                setContext({...context, counter : context.counter - 1})
-            }         
-        }, 1000)
-        
-      }, [context]);
+    let socket = params.sock;
+
+    socket.on('question', function(msg, id) {
+        if(msg) {
+            setContext({questions:[<Question id={id} description={msg} sock={socket}></Question>], counter: context.counter, score: context.score})
+        }
+      });
+
+      socket.on('response', function(id, isCorrect, score) {
+        if(isCorrect) {
+            setContext({...context, score: score});
+        }
+      });
+
+      socket.on('scorecard', function(scorecard) {
+            setContext({...context, scorecard : scorecard, GameOver: true});
+      });
+
+   /* useEffect(() => {
+     /*   context.counter >= 0 && setTimeout(() => {      
+            setContext({...context, counter : context.counter - 1, score: context.score})         
+        }, 1000)*/
+      //}, [context]);
 
     return (
         <div>
         <header className="App-header">
-            <span> countdown : {context.counter}</span>
-            <span>Score : {context.score}</span>
-            <Stack>{context.questions}</Stack>
+            {context.GameOver?
+            <div> 
+            <h1>Score Card</h1>
+            <div>{context.scorecard}</div></div>
+            :<div>
+            { context.questions.length === 0? <div>Waiting for the question from server</div>:
+                <div>{/*<span> countdown : {context.counter}</span>*/}
+                <div>Score : {context.score}</div><Stack>{context.questions}</Stack></div> 
+            }</div>}
         </header>
         </div>
     );
