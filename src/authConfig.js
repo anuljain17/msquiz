@@ -15,7 +15,7 @@ export const msalConfig = {
 		clientId: "47d7dfeb-ce56-40ae-a254-a899a989373c",
 		authority:
 			"https://login.microsoftonline.com/7dd83093-3ba2-4f89-a728-2c8296ea03db",
-		redirectUri: "https://msquiz.azurewebsites.net",
+		redirectUri: "https://timepassquiz.azurewebsites.net",
 	},
 	cache: {
 		cacheLocation: "sessionStorage", // This configures where your cache will be stored
