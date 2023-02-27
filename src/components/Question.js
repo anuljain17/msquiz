@@ -25,7 +25,7 @@ function Question(context) {
 	};
 
 	let keyPress = (e) => {
-		if (e.keyCode == 13) {
+		if (e.keyCode === 13) {
 			console.log("value", e.target.value);
 			if (!disable) {
 				socket.emit("answer", context.id, e.target.value);

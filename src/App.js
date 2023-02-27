@@ -62,7 +62,7 @@ function App() {
 				});
 			}
 		}
-	}, state);
+	}, [state]);
 
 	return (
 		<GoogleOAuthProvider clientId="120355859402-nn43p6brc163ilv654kphci1gkmlqs0k.apps.googleusercontent.com">

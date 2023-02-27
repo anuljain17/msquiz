@@ -3,12 +3,7 @@ import { io } from "socket.io-client";
 import { useState } from "react";
 import Game from "../Game";
 
-import { PublicClientApplication, EventType } from "@azure/msal-browser";
-import { msalConfig } from "../authConfig.js";
-
 let socket = null;
-
-const msalInstance = new PublicClientApplication(msalConfig);
 
 function Join(props) {
 	// Styles definition
