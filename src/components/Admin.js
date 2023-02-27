@@ -41,7 +41,11 @@ function Admin(context) {
 		};
 		// You can submit the form values to your server here
 		axios
-			.post("http://localhost:9000/form", formData, config)
+			.post(
+				"https://timepassquizserver.azurewebsites.net/form",
+				formData,
+				config
+			)
 			.then(function (response) {
 				console.log(response);
 			})
