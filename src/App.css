@@ -1,53 +1,161 @@
 .App {
-  text-align: center;
+	text-align: center;
+	height: 100%;
+}
+.footer {
+	color: #282c34;
+	background-color: #282c34;
+	min-height: 600px;
+	width: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+	font-family: "robotto";
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+	height: 40vmin;
+	pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    height: 20vmin;
-    margin-right: -30px;
-    animation: App-logo-spin infinite 20s linear;
-  }
+	.App-logo {
+		height: 20vmin;
+		margin-right: -30px;
+		animation: App-logo-spin infinite 20s linear;
+	}
 }
 
-.alignheader{
-  align-items: center;
+@font-face {
+	font-family: "robotto";
+	src: url("resources/fonts/Roboto-Light.ttf") format("truetype");
+}
+
+.alignheader {
+	align-items: center;
 }
 .App {
-  background-color: #282c34;
-  min-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100%;
+	width: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+	font-family: "robotto";
 }
 .App-header {
-  background-color: #282c34;
-  min-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 90vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+
+.App-header-Question {
+	background-color: #282c34;
+	min-height: 80vh;
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	font-size: calc(10px + 2vmin);
+	color: white;
+	border: "2px solid #E8E8E8";
+}
+
+.ms-Label {
+	color: white;
+	align-items: left;
+	text-align: left;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
+}
+
+.scorecard {
+	display: flex;
+	border: 1px solid rgb(138, 136, 134);
+	flex-direction: column;
+	font-size: 14px;
+	align-items: center;
+	justify-content: center;
+	width: 150px;
+	height: 100px;
+	border-radius: 5px;
+	background-color: #282c34;
+	border-color: aliceblue;
+}
+
+.ingamescorecard {
+	display: flex;
+	border: 1px solid rgb(138, 136, 134);
+	flex-direction: column;
+	font-size: 14px;
+	align-items: center;
+	justify-content: center;
+	border-radius: 5px;
+	background-color: #282c34;
+	border-color: aliceblue;
+	padding: 5px;
+}
+
+.leaderboard {
+	display: flex;
+	border: 1px solid rgb(138, 136, 134);
+	flex-direction: column;
+	font-size: 14px;
+	align-items: center;
+	justify-content: center;
+	width: 150px;
+	height: 100px;
+	border-radius: 5px;
+	background-color: #282c34;
+	border-color: aliceblue;
+}
+
+.label {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	font-family: "robotto";
+}
+
+.bodystyle {
+	background-color: #282c34;
+}
+
+.score {
+	font-size: 18px;
+	text-align: center;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.mybtn {
+	color: white;
+	border: "2px solid #E8E8E8";
+	font-family: "robotto";
+	background-color: #282c34;
+}
+
+div[role*="button"] {
+	background-color: #282c34;
 }

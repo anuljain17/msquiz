@@ -1,4 +1,4 @@
-import { TextField } from "@fluentui/react";
+import { TextField, DefaultButton } from "@fluentui/react";
 import { io } from "socket.io-client";
 import { useState } from "react";
 import Game from "../Game";
@@ -18,10 +18,7 @@ function Join(props) {
 		if (socket == null) {
 			let roomid = document.getElementById("roomid").value;
 			socket = io(
-				"https://msquizserver.azurewebsites.net/?room=" +
-					roomid +
-					"&userName=" +
-					props.name
+				"http://localhost:9000/?room=" + roomid + "&userName=" + props.name
 			);
 
 			socket.on("connected", function (msg) {
@@ -45,24 +42,25 @@ function Join(props) {
 			{context.gamestarted ? (
 				<Game sock={socket}></Game>
 			) : context.status ? (
-				<header className="App-header">
-					{" "}
+				<header>
 					<div>
-						{" "}
 						<div>Waiting for Host to start the Game</div>
 						<div> Other Players in the lobby : </div>
 						<div id="status">{context.status}</div>
 					</div>
 				</header>
 			) : (
-				<header className="App-header">
-					<h1>Join a room</h1>
+				<header>
+					<h1>Join a Room</h1>
 					<TextField
+						label="Enter Room Id"
 						id="roomid"
-						label="enter room id"
 						style={{ textColor: "white" }}
-					/>
-					<button onClick={joinAction}>Join</button>
+					></TextField>
+					<br></br>
+					<DefaultButton className="mybtn" onClick={joinAction}>
+						Join
+					</DefaultButton>
 				</header>
 			)}
 		</div>

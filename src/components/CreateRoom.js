@@ -29,10 +29,7 @@ function CreateRoom(props) {
 	// let socket = socketio.connect("http://localhost:9000?room=1&userName=User_B");
 	if (socket == null) {
 		socket = io(
-			"https://msquizserver.azurewebsites.net/?room=" +
-				roomid +
-				"&userName=" +
-				props.name
+			"http://localhost:9000/?room=" + roomid + "&userName=" + props.name
 		);
 	}
 	// Styles definition
@@ -44,14 +41,14 @@ function CreateRoom(props) {
 	});
 
 	return (
-		<header className="App-header">
+		<header>
 			{gamestarted ? (
 				<Game sock={socket}></Game>
 			) : (
 				<div>
 					<h1>Game Lobby</h1>
-					<span>Use this id to invite friends: {roomid}</span>
-					<div></div>
+					<div>Use this id to invite friends: {roomid}</div>
+					<br></br>
 					<div>People in the Lobby : </div>
 					<div id="status"></div>
 					<Stack
@@ -60,14 +57,14 @@ function CreateRoom(props) {
 						tokens={horizontalGapStackTokens}
 					>
 						<DefaultButton
+							className="mybtn"
 							onClick={() => {
 								socket.emit("message", "REQUESTED SERVER TO START GAME ");
 								socket.emit("startgame", "Please start Game for this room ");
 								startgame(true);
 							}}
 						>
-							{" "}
-							Start Game !!
+							Start Game
 						</DefaultButton>
 					</Stack>
 				</div>

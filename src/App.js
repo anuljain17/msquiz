@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import CreateRoom from "./components/CreateRoom";
 import Join from "./components/join";
+import Leaderboard from "./components/Leaderboard";
 import { DefaultButton, Stack } from "@fluentui/react";
-import logo from "../src/resources/logo.png";
+import logo from "../src/resources/logo.jpg";
 import { AuthenticatedTemplate } from "@azure/msal-react";
+import Admin from "./components/Admin";
 import { PublicClientApplication, EventType } from "@azure/msal-browser";
 import { msalConfig } from "./authConfig";
 import { GoogleLogin } from "@react-oauth/google";
@@ -12,7 +14,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const verticalGapStackTokens = {
 	childrenGap: 10,
-	padding: 10,
+	padding: 5,
 	alignItems: "center",
 };
 
@@ -51,52 +53,58 @@ function App() {
 		}
 	}
 
-	const account = msalInstance.getActiveAccount();
-	if (!state.isAuthenticated && account) {
-		if (account) {
-			setState({
-				...state,
-				isAuthenticated: true,
-				name: msalInstance.getActiveAccount().name,
-			});
+	useEffect(() => {
+		const account = msalInstance.getActiveAccount();
+		if (!state.isAuthenticated && account) {
+			if (account) {
+				setState({
+					...state,
+					isAuthenticated: true,
+					name: msalInstance.getActiveAccount().name,
+				});
+			}
 		}
-	}
+	}, state);
 
 	return (
 		<GoogleOAuthProvider clientId="120355859402-nn43p6brc163ilv654kphci1gkmlqs0k.apps.googleusercontent.com">
 			<div className="App">
-				<Stack
-					className="alignheader"
-					horizontal
-					tokens={verticalGapStackTokens}
-				>
-					<img src={logo} className="App-logo" alt="logo" />
-					<h1>MS Quiz</h1>
+				<Stack className="alignheader" tokens={verticalGapStackTokens}>
+					<h1>TIMEPASSQUIZ</h1>
+					{state.isAuthenticated ? <span>Welcome {state.name}</span> : <></>}
 				</Stack>
-				{state.isAuthenticated ? <span>Welcome {state.name}</span> : <></>}
-
+				<br></br>
 				{state.choice === "" ? (
-					<header className="App-header">
+					<>
 						{state.isAuthenticated ? (
 							<Stack tokens={verticalGapStackTokens}>
 								<DefaultButton
+									className="mybtn"
 									onClick={() => setState({ ...state, choice: "1" })}
 								>
 									Create a new Room
 								</DefaultButton>
 								<DefaultButton
+									className="mybtn"
 									onClick={() => setState({ ...state, choice: "2" })}
 								>
 									Join a room
 								</DefaultButton>
+								<DefaultButton
+									className="mybtn"
+									onClick={() => setState({ ...state, choice: "3" })}
+								>
+									Leaderboard
+								</DefaultButton>
 							</Stack>
 						) : (
 							<>
-								<DefaultButton onClick={() => login()}>
+								<DefaultButton className="mybtn" onClick={() => login()}>
 									login via microsoft account
 								</DefaultButton>
 								<br></br>
 								<GoogleLogin
+									isSignedIn={true}
 									onSuccess={(credentialResponse) => {
 										console.log(credentialResponse);
 										const responsePayload = parseJwt(
@@ -119,15 +127,32 @@ function App() {
 										console.log("Login Failed");
 									}}
 								/>
+								<br></br>
+								<DefaultButton
+									className="mybtn"
+									onClick={() => {
+										setState({
+											...state,
+											choice: "4",
+										});
+									}}
+								>
+									Submit a Question
+								</DefaultButton>
 							</>
 						)}
-					</header>
+					</>
 				) : state.choice === "1" ? (
 					<CreateRoom name={state.name}></CreateRoom>
-				) : (
+				) : state.choice === "2" ? (
 					<Join name={state.name}></Join>
+				) : state.choice === "4" ? (
+					<Admin></Admin>
+				) : (
+					<Leaderboard></Leaderboard>
 				)}
 			</div>
+			<div className="footer" />
 		</GoogleOAuthProvider>
 	);
 }
