@@ -1,12 +1,7 @@
-import { DefaultButton, List, Stack } from "@fluentui/react";
+import { DefaultButton, Stack } from "@fluentui/react";
 import { useState } from "react";
 import Game from "../Game";
-import { DefaultPalette } from "@fluentui/react";
 import { io } from "socket.io-client";
-import { PublicClientApplication, EventType } from "@azure/msal-browser";
-import { msalConfig } from "../authConfig.js";
-
-const msalInstance = new PublicClientApplication(msalConfig);
 
 const stackStyles = {
 	root: {

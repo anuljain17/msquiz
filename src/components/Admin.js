@@ -1,12 +1,8 @@
 import { DefaultButton, TextField, Stack, StackItem } from "@fluentui/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { default as axios } from "axios";
 
 function Admin(context) {
-	let submit = () => {
-		let ans = document.getElementById("answer").value;
-	};
-
 	document.getElementById("root").style.height = "100%";
 
 	const verticalGapStackTokens = {

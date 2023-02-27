@@ -1,12 +1,5 @@
 import * as React from "react";
-import {
-	DefaultButton,
-	Image,
-	Stack,
-	StackItem,
-	Text,
-	TextField,
-} from "@fluentui/react";
+import { Stack, StackItem } from "@fluentui/react";
 
 function Leaderboard(props) {
 	// Populate with items for demos.
@@ -18,25 +11,6 @@ function Leaderboard(props) {
 			value: i,
 		});
 	}
-
-	let _columns = [
-		{
-			key: "column1",
-			name: "Name",
-			fieldName: "name",
-			minWidth: 100,
-			maxWidth: 200,
-			isResizable: true,
-		},
-		{
-			key: "column2",
-			name: "Value",
-			fieldName: "value",
-			minWidth: 100,
-			maxWidth: 200,
-			isResizable: true,
-		},
-	];
 
 	return (
 		<div>

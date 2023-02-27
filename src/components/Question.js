@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { StringUtils } from "@azure/msal-browser";
 import {
 	DefaultButton,
@@ -9,6 +10,7 @@ import {
 import { useState } from "react";
 
 function Question(context) {
+	// eslint-disable-next-line no-unused-vars
 	let [disable, setDisabled] = useState(context.disable);
 
 	if (!context) {
