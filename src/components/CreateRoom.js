@@ -24,7 +24,10 @@ function CreateRoom(props) {
 	// let socket = socketio.connect("http://localhost:9000?room=1&userName=User_B");
 	if (socket == null) {
 		socket = io(
-			"http://localhost:9000/?room=" + roomid + "&userName=" + props.name
+			"https://timepassquizserver.azurewebsites.net?room=" +
+				roomid +
+				"&userName=" +
+				props.name
 		);
 	}
 	// Styles definition
