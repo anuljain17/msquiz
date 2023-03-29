@@ -19,7 +19,10 @@ function Game(params) {
 		if (msg) {
 			let jsonPayload = JSON.parse(msg);
 			axios
-				.get("http://localhost:9000/getImageurl/" + jsonPayload.imageurl)
+				.get(
+					"https://timepassquizserver.azurewebsites.net/getImageurl/" +
+						jsonPayload.imageurl
+				)
 				.then((res) => {
 					console.log("@@@", res);
 					setContext({

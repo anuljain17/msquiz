@@ -13,7 +13,7 @@ function Join(props) {
 		if (socket == null) {
 			let roomid = document.getElementById("roomid").value;
 			socket = io(
-				"https://timepassquizserver.azurewebsites.net/?room=" +
+				"https://timepassquizserver.azurewebsites.net?room=" +
 					roomid +
 					"&userName=" +
 					props.name
